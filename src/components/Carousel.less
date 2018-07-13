@@ -1,0 +1,78 @@
+.Carousel {
+    overflow: hidden;
+    width: 800px;
+    height: 300px;
+    position: relative;
+    transform: translateZ(0);
+
+    &__viewbox {
+        display: flex;
+        justify-content: flex-start;
+        
+        &--sliding {
+            transition: transform 300ms ease;
+        }
+    }
+
+    &__button-wrapper {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+
+        &--prev {
+            left: 0;
+        }
+
+        &--next {
+            right: 0
+        }
+    }
+
+    &__button {
+        @size: 50px;
+        pointer-events: auto;
+        color: #eee;
+        font-size: 30px;
+        font-weight: 500;
+        background-color: rgba(0, 0, 0, 0.6);
+        height: @size;
+        width: @size;
+        border-radius: @size;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        &--sliding {
+            pointer-events: none;
+        }
+
+        > span {
+            pointer-events: none;
+            position: relative;
+            bottom: 3px;
+            user-select: none;
+        }
+
+        &--prev {
+            left: 0;
+            
+            > span {
+                right: 2px;
+            }
+        }
+
+        &--next {
+            right: 0;
+
+            > span {
+                left: 2px;
+            }
+        }
+    }
+}
