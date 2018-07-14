@@ -27,3 +27,22 @@
   color: #fff;
   text-shadow: 0 0 4px #000;
 }
+.CarouselSlide__overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: opacity 300ms ease;
+  opacity: 1;
+}
+.CarouselSlide__overlay--current {
+  opacity: 0;
+}
+.CarouselSlide__overlay--will-be-current {
+  opacity: 0;
+}
+.CarouselSlide__overlay--will-not-be-current {
+  opacity: 1;
+}

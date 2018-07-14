@@ -29,4 +29,27 @@
             text-shadow: 0 0 4px #000;
         }
     }
+
+    &__overlay {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        transition: opacity 300ms ease;
+        opacity: 1;
+
+        &--current {
+            opacity: 0;
+        }
+
+        &--will-be-current {
+            opacity: 0;
+        }
+
+        &--will-not-be-current {
+            opacity: 1;
+        }
+    }
 }

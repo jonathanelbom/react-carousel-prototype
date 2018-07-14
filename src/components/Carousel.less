@@ -1,9 +1,15 @@
 .Carousel {
     overflow: hidden;
-    width: 800px;
-    height: 300px;
+    width: 100%;
+    height: 100%;
     position: relative;
     transform: translateZ(0);
+
+    &--panning {
+        .CarouselSlide__overlay {
+            transition: none;
+        }
+    }
 
     &__viewbox {
         display: flex;

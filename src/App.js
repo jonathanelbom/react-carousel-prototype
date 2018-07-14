@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Carousel from './components/Carousel';
+import util from './utils/CarouselUtil';
 import './App.css';
 
 const counts = {
@@ -62,65 +63,31 @@ class App extends Component {
 
     onPrev = () => {
         this.setState({
-            index: this.getIndex(this.state.index, false)
-        }, () => {
-            // console.log('onPrev, this.state.index:', this.state.index);
+            index: util.getIndex(this.state.index, images.length, false)
         });
     }
 
     onNext = () => {
         this.setState({
-            index: this.getIndex(this.state.index, true)
-        }, () => {
-            // console.log('onNext, this.state.index:', this.state.index);
+            index: util.getIndex(this.state.index, images.length, true)
         });
-    }
-
-    getRenderedIndices(index) {
-        const count = 5;
-        const renderedIndices = [];
-        const sideLength = Math.floor(count / 2);
-        renderedIndices[sideLength] = index;
-        let tempIndex = index;
-        for (let i = 0; i < sideLength; i++) {
-            tempIndex = this.getIndex(tempIndex, false);
-            renderedIndices[sideLength - 1 - i] = tempIndex;
-        }
-        tempIndex = index;
-        for (let i = 0; i < sideLength; i++) {
-            tempIndex = this.getIndex(tempIndex, true);
-            renderedIndices[sideLength + i + 1] = tempIndex;
-        }
-        return renderedIndices;
-    }
-
-    getIndex(index, next) {
-        const length = images.length;
-        if (next) {
-            return index + 1 <= length - 1
-                ? index + 1
-                : 0;
-        } else {
-            return index - 1 >= 0
-                ? index - 1
-                : length - 1;
-        }
-        return index;
     }
 
     render() {
         const {index} = this.state;
+        const renderedIndicesCount = 5;
         return (
             <div className="App">
-                <Carousel
-                    index={index}
-                    renderedIndices={this.getRenderedIndices(index)}
-                    images={images}
-                    slideSize={'height'}
-                    onPrev={this.onPrev}
-                    onNext={this.onNext}
-                    getIndex={this.getIndex}
-                />
+                <div className="CarouselContainer">
+                    <Carousel
+                        index={index}
+                        renderedIndices={util.getRenderedIndices(index, images.length, renderedIndicesCount)}
+                        images={images}
+                        slideSize={'height'}
+                        onPrev={this.onPrev}
+                        onNext={this.onNext}
+                    />
+                </div>
             </div>
         );
     }
