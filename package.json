@@ -6,7 +6,7 @@
     "rc-hammerjs": "^0.6.9",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "npm run build-css && run-p -ncr watch-css start-js",
